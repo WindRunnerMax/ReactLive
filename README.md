@@ -1,4 +1,4 @@
-# React Live Runtime
+# React Live
 
 ```bash
 $ npm i -g pnpm@6.24.3
