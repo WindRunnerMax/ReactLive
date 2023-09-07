@@ -1,0 +1,13 @@
+.body {
+  .container {
+    border: 1px solid var(--color-border-3);
+    box-sizing: border-box;
+    min-height: 300px;
+    width: 500px;
+  }
+
+  .textarea {
+    min-height: 300px;
+    width: 500px;
+  }
+}
