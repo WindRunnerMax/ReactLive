@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import { transform as transformCode, Options } from "sucrase";
 import React from "react";
 import { Button, Input } from "@arco-design/web-react";
+import { BenchMark } from "./benchmark";
 
 const INIT_CODE = `<Button type='primary' onClick={() => alert(111)}>Primary</Button>`;
 const DEFAULT_OPTION: Options = { transforms: ["jsx"], production: true };
@@ -42,6 +43,7 @@ const App: React.FC = () => {
 
   return (
     <div className={styles.body}>
+      <BenchMark></BenchMark>
       <div className={styles.container}>
         <div ref={ref}></div>
       </div>
