@@ -3,6 +3,7 @@ import type { Options as SWCOptions } from "@swc/wasm-web";
 import type { TransformOptions as BabelOptions } from "babel-standalone";
 
 export type { SucraseOptions, SWCOptions, BabelOptions };
+export type Sandbox = Record<string | symbol, unknown>;
 
 export const DEFAULT_BABEL_OPTION: BabelOptions = {
   presets: ["stage-3", "react", "es2015"],

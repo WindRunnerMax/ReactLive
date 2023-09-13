@@ -6,5 +6,5 @@ export const compileWithBabel = function (code: string, options?: BabelOptions) 
   return result.code;
 };
 
-// https://babel.dev/rep
+// https://babel.dev/repl
 // https://babel.dev/docs/babel-standalone
