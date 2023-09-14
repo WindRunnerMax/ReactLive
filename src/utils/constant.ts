@@ -18,3 +18,5 @@ export const DEFAULT_SUCRASE_OPTIONS: SucraseOptions = {
   transforms: ["jsx"],
   production: true,
 };
+
+export const BUILD_IN_SANDBOX_KEY = ["___BRIDGE___"];

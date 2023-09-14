@@ -1,5 +1,6 @@
 import { Sandbox } from "@/utils/constant";
 
 export const renderWithInline = (code: string, dependency: Sandbox) => {
-  return new Function("dependency", `return (${code.trim()})`)(dependency);
+  const fn = new Function("dependency", `with(dependency) { return (${code.trim()})}`);
+  return fn(dependency);
 };

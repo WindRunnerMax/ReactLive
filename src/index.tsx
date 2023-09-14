@@ -1,13 +1,14 @@
 import styles from "./index.m.scss";
 import { useEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom";
-import { transform as transformCode, Options } from "sucrase";
 import React from "react";
 import { Button, Input } from "@arco-design/web-react";
 import { BenchMark } from "./benchmark";
+import { compileWithSucrase } from "./compiler/sucrase";
+import { withSandbox } from "./utils/sandbox";
+import { renderWithDependency } from "./renderer/dependency";
 
 const INIT_CODE = `<Button type='primary' onClick={() => alert(111)}>Primary</Button>`;
-const DEFAULT_OPTION: Options = { transforms: ["jsx"], production: true };
 
 const App: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -15,25 +16,15 @@ const App: React.FC = () => {
 
   const renderCode = (code: string) => {
     try {
-      // transform: babel tsc @swc/wasm-web
-      const { code: compiledCode } = transformCode(`return (${code});`, DEFAULT_OPTION);
       if (ref.current) {
         const el = ref.current;
-        const sandbox: Record<string, unknown> = {
-          React,
-          Button,
-        };
-        // sandbox: window proxy iframe
-        // xss: js-xss
-        const withCode = `with(sandbox) { ${compiledCode} }`;
-        console.log(withCode);
-        // no-with: ...keys ...values
-        const Components = new Function("sandbox", withCode)(sandbox);
-        // SSR: ReactDOMServer.renderToStaticMarkup + ReactDOM.hydrate
-        ReactDOM.render(Components, el);
+        const sandbox = withSandbox({ React, Button, console, alert });
+        const compiledCode = compileWithSucrase(code);
+        const Component = renderWithDependency(compiledCode, sandbox) as JSX.Element;
+        ReactDOM.render(Component, el);
       }
     } catch (error) {
-      console.warn("Transform Code Error", error);
+      console.log("Transform Code Error", error);
     }
   };
 
