@@ -8,7 +8,7 @@ const CopyPlugin = require("copy-webpack-plugin");
 module.exports = {
   context: __dirname,
   entry: {
-    index: "./src/index.tsx",
+    index: "./example/index.tsx",
   },
   output: {
     path: path.resolve(__dirname, "build"),
