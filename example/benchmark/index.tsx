@@ -20,9 +20,8 @@ export const BenchMark = () => {
         onClick={() => {
           console.time("babel");
           const code = getCode();
-          const result = compileWithBabel(code);
+          compileWithBabel(code);
           console.timeEnd("babel");
-          console.log(result);
         }}
       >
         Babel
@@ -34,10 +33,9 @@ export const BenchMark = () => {
           await prepare();
           console.time("swc");
           const code = getCode();
-          const result = compileWithSWC(code);
+          compileWithSWC(code);
           console.timeEnd("swc");
           console.timeEnd("swc-with-prepare");
-          console.log(await result);
         }}
       >
         SWC
@@ -47,9 +45,8 @@ export const BenchMark = () => {
         onClick={() => {
           console.time("sucrase");
           const code = getCode();
-          const result = compileWithSucrase(code);
+          compileWithSucrase(code);
           console.timeEnd("sucrase");
-          console.log(result);
         }}
       >
         Sucrase

@@ -4,9 +4,9 @@ import ReactDOM from "react-dom";
 import React from "react";
 import { Button, Input } from "@arco-design/web-react";
 import { BenchMark } from "./benchmark";
-import { compileWithSucrase } from "./compiler/sucrase";
-import { withSandbox } from "./utils/sandbox";
-import { renderWithDependency } from "./renderer/dependency";
+import { compileWithSucrase } from "../src/compiler/sucrase";
+import { withSandbox } from "../src/utils/sandbox";
+import { renderWithDependency } from "../src/renderer/dependency";
 
 const INIT_CODE = `<Button type='primary' onClick={() => alert(111)}>Primary</Button>`;
 
