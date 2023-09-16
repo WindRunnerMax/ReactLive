@@ -1,5 +1,4 @@
 export { compileWithBabel } from "./compiler/babel";
-export { prepare as prepareSWC, compileWithSWC } from "./compiler/swc";
 export { compileWithSucrase } from "./compiler/sucrase";
 export { renderWithInline } from "./renderer/inline";
 export { renderWithDependency } from "./renderer/dependency";
@@ -12,3 +11,6 @@ export {
   BUILD_IN_SANDBOX_KEY,
 } from "./utils/constant";
 export { withSandbox } from "./utils/sandbox";
+
+// https://github.com/iotaledger/identity.rs/issues/338
+// use: import { prepare, compileWithSWC } from "react-live-runtime/dist/compiler/swc";

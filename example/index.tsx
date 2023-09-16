@@ -1,14 +1,28 @@
 import styles from "./index.m.scss";
-import { useEffect, useRef, useState } from "react";
-import ReactDOM from "react-dom";
+import "@arco-design/web-react/dist/css/index.less";
 import React from "react";
-import { Button, Input } from "@arco-design/web-react";
+import ReactDOM from "react-dom";
+import { useEffect, useRef, useState } from "react";
+import * as Arco from "@arco-design/web-react";
 import { BenchMark } from "./benchmark";
 import { compileWithSucrase } from "../src/compiler/sucrase";
 import { withSandbox } from "../src/utils/sandbox";
 import { renderWithDependency } from "../src/renderer/dependency";
 
-const INIT_CODE = `<Button type='primary' onClick={() => alert(111)}>Primary</Button>`;
+const { Input, Typography, Space } = Arco;
+
+const INIT_CODE = `
+<Space size='large' style={{ marginTop: 20 }}>
+  <Button type='primary'>Primary</Button>
+  <Button type='secondary'>Secondary</Button>
+  <Button type='dashed'>Dashed</Button>
+</Space>
+<Card style={{ width: 360, marginTop: 20 }} title='Arco Card' extra={<Link>More</Link>} >
+  ByteDance's core product, Toutiao ('Headlines'), is a content platform in China and around
+  the world. Toutiao started out as a news recommendation engine and gradually evolved into a
+  platform delivering content in various formats.
+</Card>
+`;
 
 const App: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -18,8 +32,8 @@ const App: React.FC = () => {
     try {
       if (ref.current) {
         const el = ref.current;
-        const sandbox = withSandbox({ React, Button, console, alert });
-        const compiledCode = compileWithSucrase(code);
+        const sandbox = withSandbox({ React, console, alert, ...Arco });
+        const compiledCode = compileWithSucrase("<div>" + code + "</div>");
         const Component = renderWithDependency(compiledCode, sandbox) as JSX.Element;
         ReactDOM.render(Component, el);
       }
@@ -34,7 +48,8 @@ const App: React.FC = () => {
 
   return (
     <div className={styles.body}>
-      <BenchMark></BenchMark>
+      <Typography.Title heading={3}>Playground</Typography.Title>
+      <Typography.Paragraph>支持Arco Design组件的实时预览</Typography.Paragraph>
       <div className={styles.container}>
         <div ref={ref}></div>
       </div>
@@ -46,6 +61,9 @@ const App: React.FC = () => {
           onChange={setCode}
         ></Input.TextArea>
       </div>
+      <Typography.Title heading={3}>Benchmark</Typography.Title>
+      <Typography.Paragraph>打开控制台查看执行速度</Typography.Paragraph>
+      <BenchMark></BenchMark>
     </div>
   );
 };

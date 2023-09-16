@@ -1,7 +1,7 @@
 import { compileWithBabel } from "@/compiler/babel";
 import { compileWithSucrase } from "@/compiler/sucrase";
 import { compileWithSWC, prepare } from "@/compiler/swc";
-import { Button } from "@arco-design/web-react";
+import { Button, Space } from "@arco-design/web-react";
 
 const getCode = () => {
   const CHUNK = `
@@ -14,7 +14,7 @@ const getCode = () => {
 
 export const BenchMark = () => {
   return (
-    <div>
+    <Space size="small">
       <Button
         type="primary"
         onClick={() => {
@@ -51,6 +51,6 @@ export const BenchMark = () => {
       >
         Sucrase
       </Button>
-    </div>
+    </Space>
   );
 };
