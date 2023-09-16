@@ -9,7 +9,7 @@ import { compileWithSucrase } from "../src/compiler/sucrase";
 import { withSandbox } from "../src/utils/sandbox";
 import { renderWithDependency } from "../src/renderer/dependency";
 
-const { Input, Typography, Space } = Arco;
+const { Input, Typography } = Arco;
 
 const INIT_CODE = `
 <Space size='large' style={{ marginTop: 20 }}>
