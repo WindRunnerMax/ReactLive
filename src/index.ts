@@ -2,6 +2,7 @@ export { compileWithBabel } from "./compiler/babel";
 export { compileWithSucrase } from "./compiler/sucrase";
 export { renderWithInline } from "./renderer/inline";
 export { renderWithDependency } from "./renderer/dependency";
+export { renderWithIframe } from "./renderer/iframe";
 export { BabelPluginLimit } from "./compiler/babel/babel-plugin-limit";
 export type { SucraseOptions, SWCOptions, BabelOptions, Sandbox } from "./utils/constant";
 export {

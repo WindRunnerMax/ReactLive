@@ -7,9 +7,9 @@ import * as Arco from "@arco-design/web-react";
 import { BenchMark } from "./benchmark";
 import { compileWithSucrase } from "../src/compiler/sucrase";
 import { withSandbox } from "../src/utils/sandbox";
-import { renderWithDependency } from "../src/renderer/dependency";
+import { renderWithDependency } from "@/index";
 
-const { Input, Typography } = Arco;
+const { Input, Typography, Grid } = Arco;
 
 const INIT_CODE = `
 <Space size='large' style={{ marginTop: 20 }}>
@@ -49,20 +49,25 @@ const App: React.FC = () => {
   return (
     <div className={styles.body}>
       <Typography.Title heading={3}>Playground</Typography.Title>
-      <Typography.Paragraph>支持Arco Design组件的实时预览</Typography.Paragraph>
-      <div className={styles.container}>
-        <div ref={ref}></div>
-      </div>
-      <div>
-        <Input.TextArea
-          autoSize
-          className={styles.textarea}
-          value={code}
-          onChange={setCode}
-        ></Input.TextArea>
-      </div>
+      <Typography.Paragraph>支持Arco Design组件的实时预览。</Typography.Paragraph>
+      <Grid.Row align="stretch" className={styles.row}>
+        <Grid.Col span={12}>
+          <div className={styles.container}>
+            <div ref={ref}></div>
+          </div>
+        </Grid.Col>
+        <Grid.Col span={12}>
+          <Input.TextArea
+            autoSize
+            className={styles.textarea}
+            value={code}
+            onChange={setCode}
+          ></Input.TextArea>
+        </Grid.Col>
+      </Grid.Row>
+
       <Typography.Title heading={3}>Benchmark</Typography.Title>
-      <Typography.Paragraph>打开控制台查看执行速度</Typography.Paragraph>
+      <Typography.Paragraph>打开控制台查看执行速度。</Typography.Paragraph>
       <BenchMark></BenchMark>
     </div>
   );

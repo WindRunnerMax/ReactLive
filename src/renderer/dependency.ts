@@ -7,8 +7,12 @@ export const renderWithDependency = (code: string, dependency: Sandbox) => {
   const bridge = dependency.___BRIDGE___ as Record<string, unknown>;
   const fn = new Function(
     "dependency",
-    `with(dependency) { ___BRIDGE___["${id}"] = ${code.trim()}; }`
+    `with(dependency) { 
+      function fn(){  "use strict"; return (${code.trim()}); };
+      ___BRIDGE___["${id}"] = fn.call(null);
+    }
+    `
   );
-  fn(dependency);
+  fn.call(null, dependency);
   return bridge[id];
 };
