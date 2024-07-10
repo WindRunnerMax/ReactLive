@@ -1,17 +1,35 @@
 # React Live
 
- [Github](https://github.com/WindrunnerMax/ReactLive) ｜ [DEMO](https://windrunnermax.github.io/ReactLive/) ｜ [BLOG](https://github.com/WindrunnerMax/EveryDay/blob/master/Plugin/初探富文本之React实时预览.md)
+<p>
+<a href="https://github.com/WindrunnerMax/ReactLive">GitHub</a>
+<span>｜</span>
+<a href="https://windrunnermax.github.io/ReactLive/">Playground</a>
+<span>｜</span>
+<a href="https://windrunnermax.github.io/DocEditor/">DEMO</a>
+<span>｜</span>
+<a href="https://github.com/WindrunnerMax/EveryDay/blob/master/Plugin/初探富文本之React实时预览.md">BLOG</a>
+</p>
 
-## Install
+## Usage
 
 ```bash
-$ pnpm add react-live-runtime
+$ pnpm add react-live-runtime -E
+```
+
+```js
+// ./example/index.tsx
+const sandbox = withSandbox({ React, console, alert, ...Arco });
+const compiledCode = compileWithSucrase("<div>" + code + "</div>");
+const Component = renderWithDependency(compiledCode, sandbox) as JSX.Element;
+ReactDOM.render(Component, el);
 ```
 
 ## Develop
 
 ```bash
-$ npm i -g pnpm@6.24.3
-$ pnpm install
-$ npx husky install && chmod 755 .husky/pre-commit
+$ npm i -g pnpm@8.11.0
+$ pnpm install --frozen-lockfile
+$ npx husky install 
+$ chmod 755 .husky/pre-commit
+$ pnpm run dev
 ```
