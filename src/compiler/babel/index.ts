@@ -1,4 +1,5 @@
-import { BabelOptions, DEFAULT_BABEL_OPTION } from "@/utils/constant";
+import type { BabelOptions } from "@/utils/constant";
+import { DEFAULT_BABEL_OPTION } from "@/utils/constant";
 import { transform } from "babel-standalone";
 
 export const compileWithBabel = function (code: string, options?: BabelOptions) {

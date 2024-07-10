@@ -1,4 +1,5 @@
-import { DEFAULT_SUCRASE_OPTIONS, SucraseOptions } from "@/utils/constant";
+import type { SucraseOptions } from "@/utils/constant";
+import { DEFAULT_SUCRASE_OPTIONS } from "@/utils/constant";
 import { transform } from "sucrase";
 
 export const compileWithSucrase = (code: string, options?: SucraseOptions) => {

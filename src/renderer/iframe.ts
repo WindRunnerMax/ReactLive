@@ -1,4 +1,4 @@
-import { Sandbox } from "@/utils/constant";
+import type { Sandbox } from "@/utils/constant";
 import { getUniqueId } from "laser-utils";
 
 export const withIframeSandbox = (win: Record<string | symbol, unknown>, proto: Sandbox) => {

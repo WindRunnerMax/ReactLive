@@ -1,4 +1,5 @@
-import { DEFAULT_SWC_OPTIONS, SWCOptions } from "@/utils/constant";
+import type { SWCOptions } from "@/utils/constant";
+import { DEFAULT_SWC_OPTIONS } from "@/utils/constant";
 import type * as SWCType from "@swc/wasm-web";
 
 let loaded = false;

@@ -1,4 +1,4 @@
-import { PluginObj } from "babel-standalone";
+import type { PluginObj } from "babel-standalone";
 
 export const BabelPluginLimit = (): PluginObj => {
   return {

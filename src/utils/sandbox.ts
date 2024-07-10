@@ -1,5 +1,6 @@
 import { isFunction } from "laser-utils";
-import { BUILD_IN_SANDBOX_KEY, Sandbox } from "./constant";
+import type { Sandbox } from "./constant";
+import { BUILD_IN_SANDBOX_KEY } from "./constant";
 
 export const withSandbox = (dependency: Sandbox) => {
   const top = typeof window === "undefined" ? global : window;
