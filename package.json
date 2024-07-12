@@ -1,9 +1,10 @@
 {
   "name": "react-live-runtime",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "scripts": {
     "dev": "rspack dev",
     "build": "rspack build",
+    "analyze": "rspack build --analyze",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
   "main": "dist/index.js",
@@ -30,6 +31,8 @@
     "@types/node": "^20.14.10",
     "@types/react": "17.0.1",
     "@types/react-dom": "17.0.1",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
     "copy-webpack-plugin": "5",
